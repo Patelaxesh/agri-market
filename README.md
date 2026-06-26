@@ -1,17 +1,78 @@
-# agrimarket
+# AgriMarket
 
-A new Flutter project.
+AgriMarket is a Flutter and Firebase based farmer-buyer marketplace application that connects farmers directly with buyers, vendors, grocery stores, restaurants, hotels, caterers, and wholesalers. The platform helps farmers reach customers directly, reduce dependency on middlemen, and ensure fair pricing.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+### Farmer Module
 
-A few resources to get you started if this is your first Flutter project:
+* Farmer Registration and Login
+* Product Listing Management
+* Inventory Management
+* Order Management
+* Profile Management
+* Sales Tracking
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Buyer Module
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Buyer Registration and Login
+* Product Search and Discovery
+* Shopping Cart
+* Order Placement
+* Order History
+* Profile Management
+
+### Admin Module
+
+* User Management
+* Product Management
+* Order Monitoring
+* Category Management
+* Platform Analytics
+
+## Technology Stack
+
+* Flutter
+* Dart
+* Firebase Authentication
+* Cloud Firestore
+* Firebase Storage
+* Firebase Cloud Messaging (FCM)
+* Provider State Management
+
+## Project Structure
+
+```text
+lib/
+├── features/
+│   ├── farmer/
+│   ├── buyer/
+│   ├── admin/
+│   ├── auth/
+│   └── splash/
+├── core/
+└── main.dart
+```
+
+## Key Objectives
+
+* Connect farmers directly with buyers
+* Reduce middlemen dependency
+* Ensure fair market pricing
+* Simplify agricultural trading
+* Improve market accessibility
+
+## Future Enhancements
+
+* Real-time Chat
+* Online Payments
+* Delivery Tracking
+* AI-based Price Suggestions
+* Multi-language Support
+* Product Reviews and Ratings
+
+## Author
+
+Axesh Patel
+
+Flutter Developer
