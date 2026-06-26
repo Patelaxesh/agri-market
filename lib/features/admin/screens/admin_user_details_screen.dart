@@ -35,7 +35,7 @@ class AdminUserDetailsScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 36,
-                    backgroundColor: primaryColor.withOpacity(0.1),
+                    backgroundColor: primaryColor.withValues(alpha: 0.1),
                     child: Text(initial, style: const TextStyle(color: primaryColor, fontSize: 28, fontWeight: FontWeight.bold)),
                   ),
                   const SizedBox(height: 12),
@@ -124,7 +124,7 @@ class AdminUserDetailsScreen extends StatelessWidget {
     Color baseColor = status == 'Verified' ? const Color(0xFF2E7D32) : (status == 'Pending' ? Colors.orange.shade800 : const Color(0xFFC62828));
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-      decoration: BoxDecoration(color: baseColor.withOpacity(0.08), borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(color: baseColor.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(20)),
       child: Text(status, style: TextStyle(color: baseColor, fontSize: 12, fontWeight: FontWeight.bold)),
     );
   }

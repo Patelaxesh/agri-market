@@ -1,14 +1,14 @@
 import 'package:agrimarket/features/buyer/screens/buyer_orders_screen.dart';
-import 'package:agrimarket/features/buyer/screens/featured_products_screen.dart'; // Imported for Featured Products view all navigation
-import 'package:agrimarket/features/buyer/screens/nearby_farmers_screen.dart';
+import 'package:agrimarket/features/buyer/screens/buyer_featured_products_screen.dart'; // Imported for Featured Products view all navigation
+import 'package:agrimarket/features/buyer/screens/buyer_nearby_farmers_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/category_card.dart';
-import '../widgets/dashboard_banner.dart';
+import '../widgets/dashboard_banners.dart';
 import '../widgets/dashboard_header.dart';
-import '../widgets/featured_product_card.dart';
-import '../widgets/nearby_farmer_card.dart';
-import '../widgets/recent_order_card.dart';
+import '../widgets/featured_products_card.dart';
+import '../widgets/nearby_farmers_card.dart';
+import '../widgets/recent_orders_card.dart';
 import '../widgets/search_bar_widget.dart';
 
 class BuyerDashboardScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class BuyerDashboardScreen extends StatelessWidget {
               const SearchBarWidget(),
 
               // 3. Banner Slider
-              const DashboardBanner(),
+              const DashboardBanners(),
 
               // 5. Categories
               _sectionTitle(
@@ -67,7 +67,7 @@ class BuyerDashboardScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const FeaturedProductsScreen(),
+                      builder: (_) => const BuyerFeaturedProductsScreen(),
                     ),
                   );
                 },
@@ -78,7 +78,7 @@ class BuyerDashboardScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   children: const [
-                    FeaturedProductCard(
+                    FeaturedProductsCard(
                       productName: 'Fresh Tomatoes',
                       farmerName: 'Ramesh Patel',
                       location: 'Bharuch',
@@ -86,7 +86,7 @@ class BuyerDashboardScreen extends StatelessWidget {
                       quantity: '500 Kg',
                       imageUrl: '',
                     ),
-                    FeaturedProductCard(
+                    FeaturedProductsCard(
                       productName: 'Organic Potatoes',
                       farmerName: 'Suresh Bhai',
                       location: 'Ankleshwar',
@@ -105,7 +105,7 @@ class BuyerDashboardScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const NearbyFarmersScreen(),
+                      builder: (_) => const BuyerNearbyFarmersScreen(),
                     ),
                   );
                 },
@@ -116,14 +116,14 @@ class BuyerDashboardScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   children: const [
-                    NearbyFarmerCard(
+                    NearbyFarmersCard(
                       farmerName: 'Ramesh Patel',
                       village: 'Bharuch',
                       distance: '3 km',
                       productsCount: '12',
                       rating: 4.8,
                     ),
-                    NearbyFarmerCard(
+                    NearbyFarmersCard(
                       farmerName: 'Suresh Bhai',
                       village: 'Ankleshwar',
                       distance: '7 km',
@@ -150,7 +150,7 @@ class BuyerDashboardScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: const [
-                    RecentOrderCard(
+                    RecentOrdersCard(
                       orderId: '#ORD1025',
                       productName: 'Fresh Tomatoes',
                       farmerName: 'Ramesh Patel',
@@ -158,7 +158,7 @@ class BuyerDashboardScreen extends StatelessWidget {
                       amount: '₹1,400',
                       status: 'Accepted',
                     ),
-                    RecentOrderCard(
+                    RecentOrdersCard(
                       orderId: '#ORD1024',
                       productName: 'Potatoes',
                       farmerName: 'Suresh Bhai',

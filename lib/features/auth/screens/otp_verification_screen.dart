@@ -1,11 +1,11 @@
 import 'package:agrimarket/features/auth/screens/login_screen.dart';
-import 'package:agrimarket/features/auth/models/registration_params.dart';
+import 'package:agrimarket/features/auth/models/registration_model.dart';
 import 'package:agrimarket/features/auth/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  final RegistrationParams registrationData;
+  final RegistrationModel registrationData;
 
   const OtpVerificationScreen({super.key, required this.registrationData});
 

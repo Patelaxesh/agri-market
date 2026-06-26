@@ -191,7 +191,7 @@ borderRadius: BorderRadius.circular(18),
 child: Row(
 children: [
 CircleAvatar(
-backgroundColor: primaryColor.withOpacity(0.1),
+backgroundColor: primaryColor.withValues(alpha: 0.1),
 child: Icon(
 icon,
 color: primaryColor,

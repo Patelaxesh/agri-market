@@ -1,11 +1,10 @@
 import 'package:agrimarket/features/admin/screens/admin_bottom_nav_screen.dart';
+import 'package:agrimarket/features/auth/models/user_model.dart';
+import 'package:agrimarket/features/auth/providers/auth_provider.dart';
 import 'package:agrimarket/features/auth/screens/forgot_password_screen.dart';
 import 'package:agrimarket/features/auth/screens/signup_screen.dart';
 import 'package:agrimarket/features/buyer/screens/buyer_bottom_nav_screen.dart';
 import 'package:agrimarket/features/farmer/screens/farmer_bottom_nav_screen.dart';
-import 'package:agrimarket/features/auth/providers/auth_provider.dart';
-import 'package:agrimarket/features/auth/models/user_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -121,12 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
       await signIn.initialize(serverClientId: webClientId);
       GoogleSignInAccount? account = await signIn.authenticate();
 
-      if (account == null) {
-        setState(() { loading = false; });
-        return; // Execution stops gracefully if user exits panel midway
-      }
 
-      GoogleSignInAuthentication googleAuth = await account.authentication;
+
+      GoogleSignInAuthentication googleAuth =  account.authentication;
       final credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
       );
@@ -141,11 +137,16 @@ class _LoginScreenState extends State<LoginScreen> {
           email: userCredential.user!.email ?? '',
           name: userCredential.user!.displayName ?? 'Buyer Account',
           mobile: userCredential.user!.phoneNumber ?? '',
-          role: 'buyer', createdAt: DateTime.now(),  // Default assignment logic forced directly here
+          role: 'buyer',
+          createdAt:
+              DateTime.now(), // Default assignment logic forced directly here
         );
 
         // Synchronize state provider globally inside tree structure
-        Provider.of<AuthProvider>(context, listen: false).setAuthenticatedUser(loggedInUser);
+        Provider.of<AuthProvider>(
+          context,
+          listen: false,
+        ).setAuthenticatedUser(loggedInUser);
 
         // Seamless route navigation target directly initialized
         Navigator.pushReplacement(
@@ -153,7 +154,6 @@ class _LoginScreenState extends State<LoginScreen> {
           MaterialPageRoute(builder: (_) => const BuyerBottomNavScreen()),
         );
       }
-
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(
@@ -294,10 +294,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       onChanged: isUiBusy
                           ? null
                           : (value) {
-                        setState(() {
-                          rememberMe = value ?? false;
-                        });
-                      },
+                              setState(() {
+                                rememberMe = value ?? false;
+                              });
+                            },
                     ),
                     const Text('Remember Me', style: TextStyle(fontSize: 14)),
                     const Spacer(),
@@ -305,13 +305,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: isUiBusy
                           ? null
                           : () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const ForgotPasswordScreen(),
-                          ),
-                        );
-                      },
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const ForgotPasswordScreen(),
+                                ),
+                              );
+                            },
                       child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
@@ -331,26 +331,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 58,
                   child: authProvider.isLoading
                       ? const Center(
-                    child: CircularProgressIndicator(color: primaryColor),
-                  )
+                          child: CircularProgressIndicator(color: primaryColor),
+                        )
                       : ElevatedButton(
-                    onPressed: isUiBusy ? null : _login,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryColor,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+                          onPressed: isUiBusy ? null : _login,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryColor,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
                 ),
 
                 const SizedBox(height: 30),
@@ -394,26 +394,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: loading
                         ? const Center(
-                      child: CircularProgressIndicator(color: primaryColor),
-                    )
+                            child: CircularProgressIndicator(
+                              color: primaryColor,
+                            ),
+                          )
                         : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/google_logo.png',
-                          height: 24,
-                        ),
-                        const SizedBox(width: 12),
-                        const Text(
-                          'Continue with Google',
-                          style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/google_logo.png',
+                                height: 24,
+                              ),
+                              const SizedBox(width: 12),
+                              const Text(
+                                'Continue with Google',
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
                   ),
                 ),
 
@@ -431,13 +433,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: isUiBusy
                           ? null
                           : () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const SignUpScreen(),
-                          ),
-                        );
-                      },
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const SignUpScreen(),
+                                ),
+                              );
+                            },
                       child: const Text(
                         'Sign Up',
                         style: TextStyle(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:agrimarket/features/auth/models/user_model.dart';
-import 'package:agrimarket/features/auth/models/registration_params.dart';
+import 'package:agrimarket/features/auth/models/registration_model.dart';
 import 'package:agrimarket/features/auth/repositories/auth_repository.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -59,7 +59,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   /// Verifies OTP token and processes Firestore data generation
-  Future<bool> registerWithOtp(RegistrationParams params, String smsCode) async {
+  Future<bool> registerWithOtp(RegistrationModel params, String smsCode) async {
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();

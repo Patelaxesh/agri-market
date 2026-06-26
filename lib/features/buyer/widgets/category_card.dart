@@ -34,7 +34,7 @@ class CategoryCard extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.04),
+              color: Colors.black.withValues(alpha: 0.04),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -47,7 +47,7 @@ class CategoryCard extends StatelessWidget {
               height: 56,
               width: 56,
               decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.12),
+                color: primaryColor.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Icon(

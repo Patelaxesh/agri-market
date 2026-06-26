@@ -1,5 +1,5 @@
 import 'package:agrimarket/features/auth/models/user_model.dart';
-import 'package:agrimarket/features/auth/models/registration_params.dart';
+import 'package:agrimarket/features/auth/models/registration_model.dart';
 import 'package:agrimarket/features/auth/services/auth_service.dart';
 
 class AuthRepository {
@@ -18,7 +18,7 @@ class AuthRepository {
   }
 
   Future<UserModel> registerUserWithPhoneVerification({
-    required RegistrationParams params,
+    required RegistrationModel params,
     required String verificationId,
     required String smsCode,
   }) {

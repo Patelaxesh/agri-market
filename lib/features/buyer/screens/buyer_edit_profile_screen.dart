@@ -171,7 +171,7 @@ class _BuyerEditProfileScreenState extends State<BuyerEditProfileScreen> {
 
                     /// Dropdown Component matching exact field boundaries
                     DropdownButtonFormField<String>(
-                      value: businessType,
+                      initialValue: businessType,
                       dropdownColor: Colors.white,
                       style: const TextStyle(color: textDark, fontSize: 13.5, fontWeight: FontWeight.w600),
                       icon: const Icon(Icons.keyboard_arrow_down_rounded, color: textSubtle, size: 20),

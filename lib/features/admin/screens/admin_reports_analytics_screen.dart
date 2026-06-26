@@ -234,7 +234,7 @@ class AdminReportsAnalyticsScreen extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 18,
-            backgroundColor: color.withOpacity(0.1),
+            backgroundColor: color.withValues(alpha: 0.1),
             child: Icon(icon, size: 18, color: color),
           ),
           const SizedBox(width: 12),
@@ -273,7 +273,7 @@ class AdminReportsAnalyticsScreen extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: color.withOpacity(0.1),
+            backgroundColor: color.withValues(alpha: 0.1),
             child: Icon(icon, color: color),
           ),
           const SizedBox(width: 12),

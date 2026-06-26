@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:agrimarket/features/farmer/screens/farmer_dashboard_screen.dart';
-import 'package:agrimarket/features/farmer/screens/my_products_screen.dart';
-import 'package:agrimarket/features/farmer/screens/orders_screen.dart';
-import 'package:agrimarket/features/farmer/screens/earnings_screen.dart';
-import 'package:agrimarket/features/farmer/screens/profile_screen.dart';
+import 'package:agrimarket/features/farmer/screens/farmer_my_products_screen.dart';
+import 'package:agrimarket/features/farmer/screens/farmer_orders_screen.dart';
+import 'package:agrimarket/features/farmer/screens/farmer_earnings_screen.dart';
+import 'package:agrimarket/features/farmer/screens/farmer_profile_screen.dart';
 
 class FarmerBottomNavScreen extends StatefulWidget {
   const FarmerBottomNavScreen({super.key});
@@ -25,10 +25,10 @@ class _FarmerBottomNavScreenState extends State<FarmerBottomNavScreen> {
 
     _screens = const [
       FarmerDashboardScreen(),
-      MyProductsScreen(),
-      OrdersScreen(),
-      EarningsScreen(),
-      ProfileScreen(),
+      FarmerMyProductsScreen(),
+      FarmerOrdersScreen(),
+      FarmerEarningsScreen(),
+      FarmerProfileScreen(),
     ];
   }
 

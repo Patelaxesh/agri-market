@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'auth_text_field.dart';
+import 'auth_text_fields.dart';
 
 class BuyerFields extends StatelessWidget {
   final TextEditingController businessNameController;
@@ -30,7 +30,7 @@ class BuyerFields extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        AuthTextField(
+        AuthTextFields(
           controller: businessNameController,
           hintText: 'Business Name',
           icon: Icons.business_outlined,
@@ -39,7 +39,7 @@ class BuyerFields extends StatelessWidget {
         const SizedBox(height: 16),
 
         DropdownButtonFormField<String>(
-          value: selectedBuyerType,
+          initialValue: selectedBuyerType,
           decoration: InputDecoration(
             labelText: 'Buyer Type',
             prefixIcon: const Icon(
@@ -80,7 +80,7 @@ class BuyerFields extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        AuthTextField(
+        AuthTextFields(
           controller: cityController,
           hintText: 'City',
           icon: Icons.location_city_outlined,

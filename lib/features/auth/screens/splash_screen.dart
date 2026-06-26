@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:agrimarket/features/auth/screens/onboarding_screen_one.dart';
+import 'package:agrimarket/features/auth/screens/onboarding_one_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const OnboardingScreenOne()),
+        MaterialPageRoute(builder: (_) => const OnboardingOneScreen()),
       );
     });
   }

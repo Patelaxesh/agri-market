@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'admin_dashboard_screen.dart';
-import 'users_screen.dart';
+import 'admin_users_screen.dart';
 import 'admin_products_screen.dart';
 import 'admin_orders_screen.dart';
 import 'admin_profile_screen.dart';
@@ -25,7 +25,7 @@ class _AdminBottomNavScreenState extends State<AdminBottomNavScreen> {
 
     _screens = const [
       AdminDashboardScreen(),
-      UsersScreen(),
+      AdminUsersScreen(),
       AdminProductsScreen(),
       AdminOrdersScreen(),
       AdminProfileScreen(),
@@ -45,7 +45,7 @@ class _AdminBottomNavScreenState extends State<AdminBottomNavScreen> {
 
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          indicatorColor: primaryColor.withOpacity(0.15),
+          indicatorColor: primaryColor.withValues(alpha: 0.15),
 
           iconTheme: WidgetStateProperty.resolveWith<IconThemeData>((states) {
             if (states.contains(WidgetState.selected)) {

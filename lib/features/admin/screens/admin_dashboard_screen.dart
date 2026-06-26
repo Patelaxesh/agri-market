@@ -1,10 +1,8 @@
-
-import 'package:agrimarket/features/admin/screens/admin_recent_activity_screen.dart';
-import 'package:agrimarket/features/admin/screens/notification_screen.dart';
-// Import your missing destination feature screens here:
-import 'package:agrimarket/features/admin/screens/users_screen.dart';
-import 'package:agrimarket/features/admin/screens/admin_products_screen.dart';
+import 'package:agrimarket/features/admin/screens/admin_notifications_screen.dart';
 import 'package:agrimarket/features/admin/screens/admin_orders_screen.dart';
+import 'package:agrimarket/features/admin/screens/admin_products_screen.dart';
+import 'package:agrimarket/features/admin/screens/admin_recent_activity_screen.dart';
+import 'package:agrimarket/features/admin/screens/admin_users_screen.dart';
 import 'package:flutter/material.dart';
 
 class AdminDashboardScreen extends StatelessWidget {
@@ -35,7 +33,9 @@ class AdminDashboardScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const NotificationScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const AdminNotificationsScreen(),
+                ),
               );
             },
             icon: const Badge(
@@ -80,7 +80,8 @@ class AdminDashboardScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryColor.withOpacity(0.3),
+                    color: primaryColor.withValues(alpha: 0.3),
+                    // Updated to withValues
                     blurRadius: 15,
                     offset: const Offset(0, 8),
                   ),
@@ -114,7 +115,8 @@ class AdminDashboardScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.15),
+                      color: Colors.white.withValues(alpha: 0.155),
+                      // Maintained withValues here
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
@@ -155,7 +157,9 @@ class AdminDashboardScreen extends StatelessWidget {
                   Colors.orange,
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const UsersScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const AdminUsersScreen(),
+                    ),
                   ),
                 ),
                 _dashboardCard(
@@ -165,7 +169,9 @@ class AdminDashboardScreen extends StatelessWidget {
                   Colors.blue,
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const UsersScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const AdminUsersScreen(),
+                    ),
                   ),
                 ),
                 _dashboardCard(
@@ -175,7 +181,9 @@ class AdminDashboardScreen extends StatelessWidget {
                   Colors.teal,
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const AdminProductsScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const AdminProductsScreen(),
+                    ),
                   ),
                 ),
                 _dashboardCard(
@@ -185,7 +193,9 @@ class AdminDashboardScreen extends StatelessWidget {
                   Colors.purple,
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const AdminOrdersScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const AdminOrdersScreen(),
+                    ),
                   ),
                 ),
               ],
@@ -263,19 +273,20 @@ class AdminDashboardScreen extends StatelessWidget {
 
   /// Refactored Dashboard Stats Grid Card Component with Splash Ink Response
   Widget _dashboardCard(
-      String title,
-      String value,
-      IconData icon,
-      Color dynamicAccent, {
-        required VoidCallback onTap,
-      }) {
+    String title,
+    String value,
+    IconData icon,
+    Color dynamicAccent, {
+    required VoidCallback onTap,
+  }) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
+            // Updated to withValues
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -296,7 +307,8 @@ class AdminDashboardScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: dynamicAccent.withOpacity(0.1),
+                    color: dynamicAccent.withValues(alpha: 0.1),
+                    // Updated to withValues
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(icon, color: dynamicAccent, size: 24),
@@ -351,7 +363,7 @@ class AdminDashboardScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1), // Updated to withValues
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: color, size: 22),
@@ -393,4 +405,3 @@ class AdminDashboardScreen extends StatelessWidget {
     );
   }
 }
-

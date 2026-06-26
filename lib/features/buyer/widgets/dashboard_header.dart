@@ -1,4 +1,4 @@
-import 'package:agrimarket/features/buyer/screens/notification_screen.dart';
+import 'package:agrimarket/features/buyer/screens/buyer_notifications_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardHeader extends StatelessWidget {
@@ -27,7 +27,7 @@ class DashboardHeader extends StatelessWidget {
             height: 58,
             width: 58,
             decoration: BoxDecoration(
-              color: primaryColor.withOpacity(0.12),
+              color: primaryColor.withValues(alpha: 0.12),
               shape: BoxShape.circle,
             ),
             child: const Icon(
@@ -95,7 +95,7 @@ class DashboardHeader extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => const NotificationsScreen(),
+                  builder: (_) => const BuyerNotificationsScreen(),
                 ),
               );
             },
@@ -112,7 +112,7 @@ class DashboardHeader extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
+                        color: Colors.black.withValues(alpha: 0.04),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),

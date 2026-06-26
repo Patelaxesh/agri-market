@@ -1,5 +1,5 @@
-import 'package:agrimarket/features/buyer/screens/cart_screen.dart';
-import 'package:agrimarket/features/buyer/screens/product_details_screen.dart';
+import 'package:agrimarket/features/buyer/screens/buyer_cart_screen.dart';
+import 'package:agrimarket/features/buyer/screens/buyer_product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class BrowseProductsScreen extends StatefulWidget {
@@ -95,7 +95,7 @@ class _BrowseProductsScreenState extends State<BrowseProductsScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const CartScreen(),
+                        builder: (context) => const BuyerCartScreen(),
                       ),
                     );
                   },
@@ -242,7 +242,7 @@ class _BrowseProductsScreenState extends State<BrowseProductsScreen> {
                   onTap: () {},
                   borderRadius: BorderRadius.circular(8),
                   child: const Padding(
-                    padding: const EdgeInsets.symmetric(
+                    padding:  EdgeInsets.symmetric(
                       horizontal: 8,
                       vertical: 4,
                     ),
@@ -290,7 +290,7 @@ class _BrowseProductsScreenState extends State<BrowseProductsScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const ProductDetailsScreen(),
+                        builder: (_) => const BuyerProductDetailsScreen(),
                       ),
                     );
                   },
@@ -506,7 +506,7 @@ class _BrowseProductsScreenState extends State<BrowseProductsScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (_) =>
-                                                      const CartScreen(),
+                                                      const BuyerCartScreen(),
                                                 ),
                                               );
                                             },

@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:agrimarket/features/admin/screens/admin_order_details_screen.dart';
+import 'package:flutter/material.dart';
 
 class AdminOrdersScreen extends StatelessWidget {
   const AdminOrdersScreen({super.key});
 
   static const Color primaryColor = Color(0xFF2E7D32);
-  static const Color backgroundColor = Color(0xFFF4F6F4);
+  static const Color backgroundColor = Color(0xFFF6F8FA);
 
   @override
   Widget build(BuildContext context) {
@@ -13,109 +13,43 @@ class AdminOrdersScreen extends StatelessWidget {
       length: 3,
       child: Scaffold(
         backgroundColor: backgroundColor,
-        body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [
-              SliverAppBar(
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black87,
-                elevation: 0,
-                pinned: false,
-                floating: true,
-                centerTitle: false,
-                title: const Text(
-                  'Orders',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.5,
-                    fontSize: 22,
-                  ),
-                ),
-                bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(72),
-                  child: Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.fromLTRB(16, 4, 16, 12),
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEFEFEF),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: TabBar(
-                      dividerColor: Colors.transparent,
-                      isScrollable: true,
-                      // Prevents tab squishing layout overflows
-                      tabAlignment: TabAlignment.start,
-                      // Fits scrollable items naturally
-                      indicator: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.05),
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      labelColor: primaryColor,
-                      unselectedLabelColor: Colors.grey.shade600,
-                      labelStyle: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                      ),
-                      unselectedLabelStyle: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13,
-                      ),
-                      tabs: const [
-                        Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.hourglass_empty_rounded, size: 16),
-                              SizedBox(width: 6),
-                              Text('Pending (15)'),
-                            ],
-                          ),
-                        ),
-                        Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.local_shipping_rounded, size: 16),
-                              SizedBox(width: 6),
-                              Text('Active (48)'),
-                            ],
-                          ),
-                        ),
-                        Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.check_circle_outline_rounded,
-                                size: 16,
-                              ),
-                              SizedBox(width: 6),
-                              Text('Completed (177)'),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ];
-          },
-          body: const TabBarView(
-            children: [
-              AdminOrdersList(status: 'Pending'),
-              AdminOrdersList(status: 'Active'),
-              AdminOrdersList(status: 'Completed'),
+        appBar: AppBar(
+          backgroundColor: backgroundColor,
+          elevation: 0,
+          title: const Text(
+            'Orders',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          bottom: const TabBar(
+            labelColor: primaryColor,
+            unselectedLabelColor: Colors.grey,
+            indicatorColor: primaryColor,
+            indicatorWeight: 3,
+            isScrollable: false,
+            labelStyle: TextStyle(fontWeight: FontWeight.bold),
+            tabs: [
+              Tab(text: 'Pending (15)'),
+              Tab(text: 'Active (48)'),
+              Tab(text: 'Completed (177)'),
             ],
           ),
+        ),
+        body: const Column(
+          children: [
+            Expanded(
+              child: TabBarView(
+                children: [
+                  AdminOrdersList(status: 'Pending'),
+                  AdminOrdersList(status: 'Active'),
+                  AdminOrdersList(status: 'Completed'),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -168,7 +102,7 @@ class AdminOrdersList extends StatelessWidget {
       children: [
         /// Summary Metrics Row Blocks
         Padding(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
           child: Row(
             children: [
               Expanded(
@@ -186,9 +120,9 @@ class AdminOrdersList extends StatelessWidget {
           ),
         ),
 
-        /// Search Bar Box Row
+        /// Search Bar Box Row with Filter Option Icon
         Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
           child: Row(
             children: [
               Expanded(
@@ -199,16 +133,20 @@ class AdminOrdersList extends StatelessWidget {
                       color: Colors.grey.shade400,
                       fontSize: 14,
                     ),
-                    prefixIcon: Icon(
-                      Icons.search_rounded,
-                      color: Colors.grey.shade400,
-                    ),
+                    prefixIcon: const Icon(Icons.search, color: Colors.grey),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsets.zero,
+                    contentPadding: const EdgeInsets.symmetric(vertical: 14),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      borderSide: const BorderSide(color: primaryColor),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide.none,
                     ),
                   ),
                 ),
@@ -219,6 +157,7 @@ class AdminOrdersList extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: Colors.grey.shade200),
                 ),
                 child: const Icon(
                   Icons.tune_rounded,
@@ -233,7 +172,7 @@ class AdminOrdersList extends StatelessWidget {
         /// Product Cards Pipeline Scroll List View
         Expanded(
           child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: orders.length,
             itemBuilder: (context, index) {
               final order = orders[index];
@@ -250,25 +189,25 @@ class AdminOrdersList extends StatelessWidget {
               }
 
               return Container(
-                margin: const EdgeInsets.only(bottom: 12),
+                margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: Colors.grey.shade200),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.015),
-                      blurRadius: 10,
+                      color: Colors.black.withValues(alpha: 0.04), // Updated to withValues
+                      blurRadius: 16,
                       offset: const Offset(0, 4),
                     ),
                   ],
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(24),
                   child: InkWell(
                     onTap: navigateToDetails,
-                    // Full responsive body card click action
                     child: Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(18),
                       child: Column(
                         children: [
                           Row(
@@ -276,18 +215,18 @@ class AdminOrdersList extends StatelessWidget {
                             children: [
                               /// Text Unique Custom ID Tag Block representation
                               Container(
-                                height: 54,
+                                height: 60,
                                 width: 75,
                                 decoration: BoxDecoration(
-                                  color: primaryColor.withOpacity(0.08),
-                                  borderRadius: BorderRadius.circular(14),
+                                  color: primaryColor.withValues(alpha: 0.1), // Updated to withValues
+                                  borderRadius: BorderRadius.circular(18),
                                 ),
                                 alignment: Alignment.center,
                                 child: Text(
                                   order['id']!,
                                   style: const TextStyle(
                                     color: primaryColor,
-                                    fontSize: 12,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -299,15 +238,15 @@ class AdminOrdersList extends StatelessWidget {
                                   children: [
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
                                         Expanded(
                                           child: Text(
                                             order['product']!,
                                             style: const TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 15,
-                                              color: Colors.black87,
+                                              fontSize: 16,
+                                              color: Colors.black,
                                             ),
                                           ),
                                         ),
@@ -320,7 +259,7 @@ class AdminOrdersList extends StatelessWidget {
                                       style: TextStyle(
                                         color: Colors.grey.shade700,
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13,
+                                        fontSize: 14,
                                       ),
                                     ),
                                     const SizedBox(height: 4),
@@ -338,9 +277,9 @@ class AdminOrdersList extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 16),
                           const Divider(height: 1),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -355,8 +294,8 @@ class AdminOrdersList extends StatelessWidget {
                                   Text(
                                     order['amount']!,
                                     style: const TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -364,24 +303,24 @@ class AdminOrdersList extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 14),
+                          const SizedBox(height: 20),
                           SizedBox(
                             width: double.infinity,
+                            height: 46,
                             child: OutlinedButton(
                               onPressed: navigateToDetails,
                               style: OutlinedButton.styleFrom(
-                                minimumSize: const Size(0, 42),
                                 side: BorderSide(
-                                  color: Colors.grey.shade200,
-                                  width: 1.5,
+                                  color: Colors.grey.shade300,
+                                  width: 1,
                                 ),
                                 foregroundColor: Colors.black87,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(24),
                                 ),
                                 textStyle: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
                                 ),
                               ),
                               child: const Text('View Order Details'),
@@ -406,6 +345,7 @@ class AdminOrdersList extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.grey.shade200),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -435,9 +375,9 @@ class AdminOrdersList extends StatelessWidget {
   Widget _iconDetailLabel(IconData icon, String text) {
     return Row(
       children: [
-        Icon(icon, size: 13, color: Colors.grey.shade400),
+        Icon(icon, size: 14, color: Colors.grey.shade400),
         const SizedBox(width: 6),
-        Text(text, style: TextStyle(color: Colors.grey.shade600, fontSize: 12)),
+        Text(text, style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
       ],
     );
   }
@@ -446,10 +386,10 @@ class AdminOrdersList extends StatelessWidget {
     Color color;
     switch (status) {
       case 'Pending':
-        color = Colors.orange.shade800;
+        color = Colors.orange;
         break;
       case 'Active':
-        color = Colors.blue.shade700;
+        color = Colors.blue;
         break;
       case 'Completed':
         color = const Color(0xFF2E7D32);
@@ -458,9 +398,9 @@ class AdminOrdersList extends StatelessWidget {
         color = Colors.grey;
     }
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
+        color: color.withValues(alpha: 0.1), // Updated to withValues
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
@@ -468,7 +408,7 @@ class AdminOrdersList extends StatelessWidget {
         style: TextStyle(
           color: color,
           fontWeight: FontWeight.bold,
-          fontSize: 11,
+          fontSize: 12.5,
         ),
       ),
     );
@@ -487,16 +427,16 @@ class AdminOrdersList extends StatelessWidget {
         baseColor = const Color(0xFFC62828);
     }
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: baseColor.withOpacity(0.08),
+        color: baseColor.withValues(alpha: 0.08), // Updated to withValues
         borderRadius: BorderRadius.circular(6),
       ),
       child: Text(
         paymentStatus,
         style: TextStyle(
           color: baseColor,
-          fontSize: 10,
+          fontSize: 11,
           fontWeight: FontWeight.bold,
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'auth_text_field.dart';
+import 'auth_text_fields.dart';
 
 class FarmerFields extends StatelessWidget {
   final TextEditingController villageController;
@@ -23,7 +23,7 @@ class FarmerFields extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        AuthTextField(
+        AuthTextFields(
           controller: villageController,
           hintText: 'Village / City',
           icon: Icons.location_city_outlined,
@@ -31,7 +31,7 @@ class FarmerFields extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        AuthTextField(
+        AuthTextFields(
           controller: stateController,
           hintText: 'State',
           icon: Icons.map_outlined,

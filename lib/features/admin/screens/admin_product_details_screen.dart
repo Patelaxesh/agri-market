@@ -41,7 +41,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 36,
-                    backgroundColor: primaryColor.withOpacity(0.1),
+                    backgroundColor: primaryColor.withValues(alpha: 0.1),
                     child: Text(
                       initial,
                       style: const TextStyle(
@@ -185,7 +185,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
-        color: baseColor.withOpacity(0.08),
+        color: baseColor.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(

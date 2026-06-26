@@ -1,9 +1,9 @@
-import 'package:agrimarket/features/farmer/screens/notification_screen.dart';
+import 'package:agrimarket/features/farmer/screens/farmer_notifications_screen.dart';
 import 'package:flutter/material.dart';
 import '../widgets/dashboard_card.dart';
-import '../widgets/quick_action_card.dart'; // Contains FarmerQuickActions and QuickActionCard
+import '../widgets/quick_actions_card.dart'; // Contains FarmerQuickActions and QuickActionCard
 import '../widgets/market_price_card.dart';
-import '../widgets/recent_order_card.dart';
+import '../widgets/recent_orders_card.dart';
 
 class FarmerDashboardScreen extends StatelessWidget {
   const FarmerDashboardScreen({super.key});
@@ -50,7 +50,7 @@ class FarmerDashboardScreen extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>FarmerNotificationsScreen()));
                     },
                     icon: const Icon(Icons.notifications_none, size: 28),
                   ),
@@ -83,7 +83,7 @@ class FarmerDashboardScreen extends StatelessWidget {
               const SizedBox(height: 12),
 
               // This calls your newly updated, fully clickable grid widget
-              const FarmerQuickActions(),
+              const QuickActionsCard(),
 
               const SizedBox(height: 24),
 
@@ -149,13 +149,13 @@ class FarmerDashboardScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),
-              const RecentOrderCard(
+              const RecentOrdersCard(
                 orderId: "1024",
                 productName: "Wheat",
                 quantity: "5 Quintal",
                 amount: "₹12,500",
               ),
-              const RecentOrderCard(
+              const RecentOrdersCard(
                 orderId: "1025",
                 productName: "Rice",
                 quantity: "3 Quintal",

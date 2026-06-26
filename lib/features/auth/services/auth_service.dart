@@ -1,7 +1,8 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:agrimarket/features/auth/models/user_model.dart';
-import 'package:agrimarket/features/auth/models/registration_params.dart';
+import 'package:agrimarket/features/auth/models/registration_model.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -30,22 +31,30 @@ class AuthService {
 
   /// Verifies the OTP credential structure and creates the user account
   Future<UserModel> registerWithEmailAndPasswordAndPhone({
-    required RegistrationParams params,
+    required RegistrationModel params,
     required String verificationId,
     required String smsCode,
   }) async {
+    // 1. Generate the phone auth credential wrapper from user input SMS verification parameters
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
       verificationId: verificationId,
       smsCode: smsCode,
     );
 
+    // 2. Instantiate base security authentication layer via basic profile identifiers
     UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
       email: params.email,
       password: params.password,
     );
 
+    // 3. Link the generated phone token securely with the created identity map to consume the reference
+    if (userCredential.user != null) {
+      await userCredential.user!.linkWithCredential(credential);
+    }
+
     String uid = userCredential.user!.uid;
 
+    // 4. Transform baseline metadata arguments cleanly into structured entity payloads
     UserModel newUser = UserModel(
       uid: uid,
       name: params.name,
@@ -60,6 +69,7 @@ class AuthService {
       buyerType: params.buyerType,
     );
 
+    // 5. Commit structured client snapshot records out to Firestore collection nodes
     await _firestore.collection('users').doc(uid).set(newUser.toMap());
     return newUser;
   }
@@ -81,3 +91,4 @@ class AuthService {
     }
   }
 }
+

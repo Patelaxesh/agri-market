@@ -1,14 +1,14 @@
 import 'package:agrimarket/features/auth/screens/otp_verification_screen.dart';
-import 'package:agrimarket/features/auth/models/registration_params.dart';
+import 'package:agrimarket/features/auth/models/registration_model.dart';
 import 'package:agrimarket/features/auth/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/account_type_selector.dart';
 import '../widgets/auth_button.dart';
-import '../widgets/auth_text_field.dart';
+import '../widgets/auth_text_fields.dart';
 import '../widgets/buyer_fields.dart';
 import '../widgets/farmer_fields.dart';
-import '../widgets/password_text_field.dart';
+import '../widgets/password_text_fields.dart';
 import '../widgets/terms_checkbox.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -112,7 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       return;
     }
 
-    final signupParams = RegistrationParams(
+    final signupParams = RegistrationModel(
       name: fullNameController.text.trim(),
       email: emailController.text.trim(),
       password: passwordController.text,
@@ -195,32 +195,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                AuthTextField(
+                AuthTextFields(
                   controller: fullNameController,
                   hintText: 'Full Name',
                   icon: Icons.person_outline,
                 ),
                 const SizedBox(height: 16),
-                AuthTextField(
+                AuthTextFields(
                   controller: mobileController,
                   hintText: 'Mobile Number',
                   icon: Icons.phone_outlined,
                   keyboardType: TextInputType.phone,
                 ),
                 const SizedBox(height: 16),
-                AuthTextField(
+                AuthTextFields(
                   controller: emailController,
                   hintText: 'Email Address',
                   icon: Icons.email_outlined,
                   keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 16),
-                PasswordTextField(
+                PasswordTextFields(
                   controller: passwordController,
                   hintText: 'Password',
                 ),
                 const SizedBox(height: 16),
-                PasswordTextField(
+                PasswordTextFields(
                   controller: confirmPasswordController,
                   hintText: 'Confirm Password',
                 ),

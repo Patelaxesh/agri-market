@@ -1,7 +1,7 @@
 import 'package:agrimarket/features/buyer/screens/buyer_edit_profile_screen.dart';
 import 'package:agrimarket/features/buyer/screens/buyer_order_history_screen.dart';
-import 'package:agrimarket/features/buyer/screens/help_support_screen.dart';
-import 'package:agrimarket/features/buyer/screens/wishlist_screen.dart';
+import 'package:agrimarket/features/buyer/screens/buyer_help_support_screen.dart';
+import 'package:agrimarket/features/buyer/screens/buyer_wishlists_screen.dart';
 import 'package:agrimarket/features/legal/screens/privacy_policy_screen.dart';
 import 'package:agrimarket/features/legal/screens/terms_conditions_screen.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +119,7 @@ class BuyerProfileScreen extends StatelessWidget {
                                   vertical: 4,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.15),
+                                  color: Colors.white.withValues(alpha: 0.15),
                                   borderRadius: BorderRadius.circular(30),
                                   border: Border.all(color: Colors.white24),
                                 ),
@@ -258,7 +258,7 @@ class BuyerProfileScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const WishlistScreen(),
+                                builder: (_) => const BuyerWishlistsScreen(),
                               ),
                             );
                           },
@@ -285,7 +285,7 @@ class BuyerProfileScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const HelpSupportScreen(),
+                                builder: (context) => const BuyerHelpSupportScreen(),
                               ),
                             );
                           },

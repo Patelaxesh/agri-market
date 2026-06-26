@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'buyer_dashboard_screen.dart';
 import 'browse_products_screen.dart';
-import 'cart_screen.dart';
+import 'buyer_cart_screen.dart';
 import 'buyer_orders_screen.dart';
 import 'buyer_profile_screen.dart';
 
@@ -27,7 +27,7 @@ class _BuyerBottomNavScreenState extends State<BuyerBottomNavScreen> {
     _screens = const [
       BuyerDashboardScreen(),
       BrowseProductsScreen(),
-      CartScreen(),
+      BuyerCartScreen(),
       BuyerOrdersScreen(),
       BuyerProfileScreen(),
     ];
@@ -55,7 +55,7 @@ class _BuyerBottomNavScreenState extends State<BuyerBottomNavScreen> {
         ),
         child: NavigationBarTheme(
           data: NavigationBarThemeData(
-            indicatorColor: primaryColor.withOpacity(0.15),
+            indicatorColor: primaryColor.withValues(alpha: 0.15),
             iconTheme: WidgetStateProperty.resolveWith<IconThemeData>((states) {
               if (states.contains(WidgetState.selected)) {
                 return const IconThemeData(color: primaryColor, size: 28);
